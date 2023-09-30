@@ -1,8 +1,6 @@
 # Localizer
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/localizer`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to your new gem! **Localize** will help you localizing your system to any language you want and create localization files in any format
 
 ## Installation
 
@@ -21,9 +19,45 @@ Or install it yourself as:
     $ gem install localizer
 
 ## Usage
+You can get benefit of **Localize** features by following this guide:
+1. **translate any text you want to any language**
+```RUBY
+Localizer::TranslatePlusClient.translate(source_language, target_langue, text)
+```
+Example
+```RUBY
+Localizer::TranslatePlusClient.translate('en', 'fr', 'Good Morning!')
+# [200, "Bonjour!"]
+```
 
-TODO: Write usage instructions here
+2. get all the supported languages
+```RUBY
+Localizer::TranslatePlusClient.all_languages
+# [200, {"Auto Detect"=>"auto", "Afrikaans"=>"af", "Albanian"=>"sq", "Amharic"=>"am", "Arabic"=>"ar", "Armenian"=>"hy", "Azerbaijani"=>"az", "Basque"=>"eu", "Belarusian"=>"be", "Bengali"=>"bn", "Bosnian"=>"bs", "Bulgarian"=>"bg", "Catalan"=>"ca", "Cebuano"=>"ceb", "Chinese (Simplified)"=>"zh-CN", "Chinese (Traditional)"=>"zh-TW", "Corsican"=>"co", "Croatian"=>"hr", "Czech"=>"cs", "Danish"=>"da", "Dutch"=>"nl", "English"=>"en", "Esperanto"=>"eo", "Estonian"=>"et", "Finnish"=>"fi", "French"=>"fr", "Frisian"=>"fy", "Galician"=>"gl", "Georgian"=>"ka", "German"=>"de", "Greek"=>"el", "Gujarati"=>"gu", "Haitian Creole"=>"ht", "Hausa"=>"ha", "Hawaiian"=>"haw", "Hebrew"=>"iw", "Hindi"=>"hi", "Hmong"=>"hmn", "Hungarian"=>"hu", "Icelandic"=>"is", "Igbo"=>"ig", "Indonesian"=>"id", "Irish"=>"ga", "Italian"=>"it", "Japanese"=>"ja", "Javanese"=>"jv", "Kannada"=>"kn", "Kazakh"=>"kk", "Khmer"=>"km", "Kinyarwanda"=>"rw", "Korean"=>"ko", "Kurdish (Kurmanji)"=>"ku", "Kurdish (Sorani)"=>"ckb", "Kyrgyz"=>"ky", "Lao"=>"lo", "Latin"=>"la", "Latvian"=>"lv", "Lithuanian"=>"lt", "Luxembourgish"=>"lb", "Macedonian"=>"mk", "Malagasy"=>"mg", "Malay"=>"ms", "Malayalam"=>"ml", "Maltese"=>"mt", "Maori"=>"mi", "Marathi"=>"mr", "Mongolian"=>"mn", "Myanmar (Burmese)"=>"my", "Nepali"=>"ne", "Norwegian"=>"no", "Nyanja (Chichewa)"=>"ny", "Odia (Oriya)"=>"or", "Pashto"=>"ps", "Persian"=>"fa", "Polish"=>"pl", "Portuguese (Portugal, Brazil)"=>"pt", "Punjabi"=>"pa", "Romanian"=>"ro", "Russian"=>"ru", "Samoan"=>"sm", "Scots Gaelic"=>"gd", "Serbian"=>"sr", "Sesotho"=>"st", "Shona"=>"sn", "Sindhi"=>"sd", "Sinhala (Sinhalese)"=>"si", "Slovak"=>"sk", "Slovenian"=>"sl", "Somali"=>"so", "Spanish"=>"es", "Sundanese"=>"su", "Swahili"=>"sw", "Swedish"=>"sv", "Tagalog (Filipino)"=>"tl", "Tajik"=>"tg", "Tamil"=>"ta", "Tatar"=>"tt", "Telugu"=>"te", "Thai"=>"th", "Turkish"=>"tr", "Turkmen"=>"tk", "Ukrainian"=>"uk", "Urdu"=>"ur", "Uyghur"=>"ug", "Uzbek"=>"uz", "Vietnamese"=>"vi", "Welsh"=>"cy", "Xhosa"=>"xh", "Yiddish"=>"yi", "Yoruba"=>"yo", "Zulu"=>"zu"}]
+```
 
+### CLI usage
+Also you can get benefits of these features in your terminal
+1. **translate any text you want to any languag**
+```RUBY
+$ bundle exec exe/localize translate --source="en" --target="fr" --text="Good Morning!"
+# Bonjour!
+```
+2. **get all the supported languages**
+```RUBY
+$ bundle exec exe/localize all_languages
+# {"Auto Detect"=>"auto", "Afrikaans"=>"af", "Albanian"=>"sq", "Amharic"=>"am", "Arabic"=>"ar", "Armenian"=>"hy", "Azerbaijani"=>"az", "Basque"=>"eu", "Belarusian"=>"be", "Bengali"=>"bn", "Bosnian"=>"bs", "Bulgarian"=>"bg", "Catalan"=>"ca", "Cebuano"=>"ceb", "Chinese (Simplified)"=>"zh-CN", "Chinese (Traditional)"=>"zh-TW", "Corsican"=>"co", "Croatian"=>"hr", "Czech"=>"cs", "Danish"=>"da", "Dutch"=>"nl", "English"=>"en", "Esperanto"=>"eo", "Estonian"=>"et", "Finnish"=>"fi", "French"=>"fr", "Frisian"=>"fy", "Galician"=>"gl", "Georgian"=>"ka", "German"=>"de", "Greek"=>"el", "Gujarati"=>"gu", "Haitian Creole"=>"ht", "Hausa"=>"ha", "Hawaiian"=>"haw", "Hebrew"=>"iw", "Hindi"=>"hi", "Hmong"=>"hmn", "Hungarian"=>"hu", "Icelandic"=>"is", "Igbo"=>"ig", "Indonesian"=>"id", "Irish"=>"ga", "Italian"=>"it", "Japanese"=>"ja", "Javanese"=>"jv", "Kannada"=>"kn", "Kazakh"=>"kk", "Khmer"=>"km", "Kinyarwanda"=>"rw", "Korean"=>"ko", "Kurdish (Kurmanji)"=>"ku", "Kurdish (Sorani)"=>"ckb", "Kyrgyz"=>"ky", "Lao"=>"lo", "Latin"=>"la", "Latvian"=>"lv", "Lithuanian"=>"lt", "Luxembourgish"=>"lb", "Macedonian"=>"mk", "Malagasy"=>"mg", "Malay"=>"ms", "Malayalam"=>"ml", "Maltese"=>"mt", "Maori"=>"mi", "Marathi"=>"mr", "Mongolian"=>"mn", "Myanmar (Burmese)"=>"my", "Nepali"=>"ne", "Norwegian"=>"no", "Nyanja (Chichewa)"=>"ny", "Odia (Oriya)"=>"or", "Pashto"=>"ps", "Persian"=>"fa", "Polish"=>"pl", "Portuguese (Portugal, Brazil)"=>"pt", "Punjabi"=>"pa", "Romanian"=>"ro", "Russian"=>"ru", "Samoan"=>"sm", "Scots Gaelic"=>"gd", "Serbian"=>"sr", "Sesotho"=>"st", "Shona"=>"sn", "Sindhi"=>"sd", "Sinhala (Sinhalese)"=>"si", "Slovak"=>"sk", "Slovenian"=>"sl", "Somali"=>"so", "Spanish"=>"es", "Sundanese"=>"su", "Swahili"=>"sw", "Swedish"=>"sv", "Tagalog (Filipino)"=>"tl", "Tajik"=>"tg", "Tamil"=>"ta", "Tatar"=>"tt", "Telugu"=>"te", "Thai"=>"th", "Turkish"=>"tr", "Turkmen"=>"tk", "Ukrainian"=>"uk", "Urdu"=>"ur", "Uyghur"=>"ug", "Uzbek"=>"uz", "Vietnamese"=>"vi", "Welsh"=>"cy", "Xhosa"=>"xh", "Yiddish"=>"yi", "Yoruba"=>"yo", "Zulu"=>"zu"}
+```
+3. **get the langugae code for any language**
+```RUBY
+$ bundle exec exe/localize language_code --language="French"
+# fr
+```
+4. **check if language is supported or not**
+```Ruby
+$ bundle exec exe/localize supported --code="fr"
+# true
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
