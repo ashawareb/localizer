@@ -58,6 +58,24 @@ $ bundle exec exe/localize language_code --language="French"
 $ bundle exec exe/localize supported --code="fr"
 # true
 ```
+5. **generate localization files** (in progress)
+```RUBY
+$ bundle exec exe/localize generate_locale language_code source_file_path format destination_path
+```
+Example
+If we want to create a localization file for our keys file, we need to do the following:
+```RUBY
+$ bundle exec exe/localize generate_locale "zh" "config/locales/fr.yml" "yml" "config/locales"
+# create  config/locales/zh.yml
+```
+if the source file does not exist, we will create localization files same as our provided templates
+```RUBY
+$ bundle exec exe/localize generate_locale "da" "config/locales/en.yml" "yml" "config/locales"
+# create  config/locales/da.yml
+# create  config/locales/models.da.yml
+# create  config/locales/common.da.yml
+# create  config/locales/da.rb
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
