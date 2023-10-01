@@ -1,5 +1,6 @@
 require 'thor'
 require 'localizer'
+require 'localizer/generators/localization_generator'
 
 module Localizer
   class CLI < Thor
@@ -34,6 +35,11 @@ module Localizer
     def supported
       supported_languages = Localizer::TranslatePlusClient.all_languages[1]
       puts supported_languages.has_value?(options[:code])
+    end
+
+    desc 'generate locale', 'generate locale files'
+    def generate_locale(language_code, source_file, extension, destination_path)
+      Localizer::Generators::LocalizationGenerator.start([language_code, source_file, extension, destination_path])
     end
   end
 end
