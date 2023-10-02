@@ -1,2 +1,5 @@
 ---
 en:
+  email_texts:
+    common:
+      good_morning: Good Morning!
