@@ -59,22 +59,37 @@ $ bundle exec exe/localize supported --code="fr"
 # true
 ```
 5. **generate localization files** (in progress)
+ - supported formats: `yml`
 ```RUBY
 $ bundle exec exe/localize generate_locale language_code source_file_path format destination_path
 ```
 Example
 If we want to create a localization file for our keys file, we need to do the following:
 ```RUBY
-$ bundle exec exe/localize generate_locale "zh" "config/locales/fr.yml" "yml" "config/locales"
-# create  config/locales/zh.yml
+$ bundle exec exe/localize generate_locale "fr" "config/locales/en.yml" "yml" "config/locales"
+# create  config/locales/fr.yml
 ```
 if the source file does not exist, we will create localization files same as our provided templates
 ```RUBY
-$ bundle exec exe/localize generate_locale "da" "config/locales/en.yml" "yml" "config/locales"
-# create  config/locales/da.yml
-# create  config/locales/models.da.yml
-# create  config/locales/common.da.yml
-# create  config/locales/da.rb
+$ bundle exec exe/localize generate_locale "fr" "config/locales/en.yml" "yml" "config/locales"
+# create  config/locales/fr.yml
+```
+
+```RUBY
+# en.yml
+---
+en:
+  email_texts:
+    common:
+      good_morning: Good Morning!
+
+# fr.yml
+---
+fr:
+  email_texts:
+    common:
+      good_morning: Bonjour!
+
 ```
 ## Development
 
